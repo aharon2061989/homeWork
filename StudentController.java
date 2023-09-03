@@ -18,16 +18,19 @@ public class StudentController {
     @PostMapping("/create")
     public void createStudent(@RequestBody Student student){
         studentRepository.createStudent(student);
+        logger.info("new student created");
     }
 
     @PutMapping("/update")
     public void updateStudent(@RequestBody Student student){
         studentRepository.updateStudent(student);
+        logger.info("student updated successfully");
     }
 
     @DeleteMapping("/delete/{studentId}")
     public void deleteStudentById(@PathVariable Long studentId){
         studentRepository.deleteStudentById(studentId);
+        logger.info("student deleted successfully");
     }
 
     @GetMapping("/{studentId}")
