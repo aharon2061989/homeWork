@@ -13,29 +13,29 @@ public class StudentController {
 
     Logger logger = LoggerFactory.getLogger(StudentController.class);
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentService studentService;
 
     @PostMapping("/create")
     public void createStudent(@RequestBody Student student){
-        studentRepository.createStudent(student);
+        studentService.createStudent(student);
         logger.info("new student created");
     }
 
     @PutMapping("/update")
     public void updateStudent(@RequestBody Student student){
-        studentRepository.updateStudent(student);
+        studentService.updateStudent(student);
         logger.info("student updated successfully");
     }
 
     @DeleteMapping("/delete/{studentId}")
     public void deleteStudentById(@PathVariable Long studentId){
-        studentRepository.deleteStudentById(studentId);
+        studentService.deleteStudentById(studentId);
         logger.info("student deleted successfully");
     }
 
     @GetMapping("/{studentId}")
     public Student getStudentById(@PathVariable Long studentId){
-        return studentRepository.getStudentById(studentId);
+        return studentService.getStudentById(studentId);
     }
 }
 
